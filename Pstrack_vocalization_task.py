@@ -626,13 +626,13 @@ def _get_axis_boundary_weights_ratio(arr):
     return boundary
 
 
-def _get_axis_boundary_aligned_weights(arr, all_blue_lvl_lst):
+def _get_axis_boundary_aligned_weights(arr, all_lvls_lst):
     max_y = np.max(arr)
     min_y = np.min(arr)
 
     all_len_lst = []
-    for blue_lvl in all_blue_lvl_lst:
-        all_len_lst.append(np.max([len(l) for l in blue_lvl]))
+    for lvl in all_lvls_lst:
+        all_len_lst.append(np.max([len(l) for l in lvl]))
 
     max_x = np.max(all_len_lst)
 
@@ -748,30 +748,30 @@ def plot_weights_ratio(plot_all_data_points=False,run_clustering=True):
             plt.show()
 
 
-def _alinged_weight_avg(cur_blue_lvl_lst):
-    cur_blue_lvl_lst_copy = cur_blue_lvl_lst.copy()
-    max_iter = np.ceil(0.2 * len(cur_blue_lvl_lst_copy))
+def _alinged_weight_avg(cur_lvl_lst):
+    cur_lvl_lst_copy = cur_lvl_lst.copy()
+    max_iter = np.ceil(0.2 * len(cur_lvl_lst_copy))
     start_idx = 0
     avg_lst = []
     # continue until reach 4/5 from origin len
-    while (len(cur_blue_lvl_lst_copy) > max_iter):
-        len_lst = [len(l) for l in cur_blue_lvl_lst_copy]
+    while (len(cur_lvl_lst_copy) > max_iter):
+        len_lst = [len(l) for l in cur_lvl_lst_copy]
         lst_idx_to_del = np.argmin(len_lst)
         min_len = np.min(len_lst)
 
         # avg to this point
         if min_len - start_idx <= 0:
             start_idx = min_len
-            del cur_blue_lvl_lst_copy[lst_idx_to_del]
+            del cur_lvl_lst_copy[lst_idx_to_del]
             continue
         mat = np.vstack(
             [l[start_idx:start_idx + (min_len - start_idx)] for l in
-             cur_blue_lvl_lst_copy])
+             cur_lvl_lst_copy])
         start_idx = min_len
 
         # concat avg
         avg_lst.extend(np.average(mat, axis=0).tolist())
-        del cur_blue_lvl_lst_copy[lst_idx_to_del]
+        del cur_lvl_lst_copy[lst_idx_to_del]
     return avg_lst
 
 
@@ -784,33 +784,33 @@ def aligned_weight_per_level():
             continue
 
         weights_arr = data_dicts[mouse]['res_dict']['wMode']
-        black_lvl_start_ind = np.cumsum(
+        inner_lvl_start_ind = np.cumsum(
             data_dicts[mouse]['psy_dict']['dayLength'])
-        blue_lvl_start_ind = np.cumsum(
+        lvl_start_ind = np.cumsum(
             data_dicts[mouse]['psy_dict']['level_ind'])
 
-        blue_lvl_auditory_lst = []
-        blue_lvl_bias_lst = []
-        for blue_lvl in blue_lvl_start_ind:
-            cur_blue_lvl_auditory_lst = []
-            cur_blue_lvl_bias_lst = []
-            for i, black_lvl in enumerate(black_lvl_start_ind):
-                if black_lvl > blue_lvl:
+        lvl_auditory_lst = []
+        lvl_bias_lst = []
+        for lvl in lvl_start_ind:
+            cur_lvl_auditory_lst = []
+            cur_lvl_bias_lst = []
+            for i, inner_lvl in enumerate(inner_lvl_start_ind):
+                if inner_lvl > lvl:
                     break
                 if not i:
                     start_ind = 0
                 else:
-                    start_ind = black_lvl_start_ind[i - 1]
-                cur_blue_lvl_auditory_lst.append(
-                    weights_arr[W_AUDITORY_IND][start_ind:black_lvl])
-                cur_blue_lvl_bias_lst.append(
-                    weights_arr[W_BIAS_IND][start_ind:black_lvl])
+                    start_ind = inner_lvl_start_ind[i - 1]
+                cur_lvl_auditory_lst.append(
+                    weights_arr[W_AUDITORY_IND][start_ind:inner_lvl])
+                cur_lvl_bias_lst.append(
+                    weights_arr[W_BIAS_IND][start_ind:inner_lvl])
 
-            blue_lvl_auditory_lst.append(cur_blue_lvl_auditory_lst)
-            blue_lvl_bias_lst.append(cur_blue_lvl_bias_lst)
+            lvl_auditory_lst.append(cur_lvl_auditory_lst)
+            lvl_bias_lst.append(cur_lvl_bias_lst)
 
-        for i, w in enumerate([blue_lvl_auditory_lst, blue_lvl_bias_lst]):
-            fig, ax = plt.subplots(nrows=1, ncols=len(blue_lvl_auditory_lst))
+        for i, w in enumerate([lvl_auditory_lst, lvl_bias_lst]):
+            fig, ax = plt.subplots(nrows=1, ncols=len(lvl_auditory_lst))
             fig.text(0.5, 0.04, s='Trial', ha='center', fontsize=10)
             fig.text(0, 0.95, "Mouse: {}".format(mouse), va='center',
                      fontsize=12)
@@ -818,18 +818,18 @@ def aligned_weight_per_level():
                 fig.text(0.04, 0.5, 'Auditory Weight', va='center',
                          rotation='vertical', fontsize=10)
                 boundary = _get_axis_boundary_aligned_weights(
-                    weights_arr[W_AUDITORY_IND], blue_lvl_auditory_lst)
+                    weights_arr[W_AUDITORY_IND], lvl_auditory_lst)
             else:
                 fig.text(0.04, 0.5, 'Bias Weight', va='center',
                          rotation='vertical', fontsize=10)
                 boundary = _get_axis_boundary_aligned_weights(
-                    weights_arr[W_BIAS_IND], blue_lvl_auditory_lst)
+                    weights_arr[W_BIAS_IND], lvl_auditory_lst)
             for j, lvl in enumerate(w):
                 # calc avg for cur lvl
                 avg_arr = _alinged_weight_avg(lvl)
                 sub_plot_title = r"$\bf{" + "Level: " + str(j + 1) + "}$"
 
-                current_fig = fig.add_subplot(1, len(blue_lvl_auditory_lst),
+                current_fig = fig.add_subplot(1, len(lvl_auditory_lst),
                                               j + 1)
                 plt.axhline(y=0, color='k')
                 plt.axvline(x=0, color='k')
