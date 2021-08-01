@@ -10,16 +10,16 @@ In addition, this projects provides advanced analsis on the weight trajectories 
 Capturing trial-to-trial fluctuations in the weighting of sensory stimuli, bias, and stimulus history, provides a delicate observation that allows the researchers to examine the brain in specific time slots corresponds to the analysis results.
 
 
-Analysis Results:
-- Psytrack weights trajectorie  
+**Analysis Results:**
+- Psytrack weights   
 ![image](https://user-images.githubusercontent.com/83977654/127745467-4d9e0a95-311b-468d-ba50-33b056a5ecea.png)  
-- Bias
-- Performance
-Additional analysis done on the Psytrack weights output:
-- Weights alignment  
-![image](https://user-images.githubusercontent.com/83977654/127745586-616717e5-5063-4095-9869-d734532de704.png)
-- Weights correlation using linear regression:
-![image](https://user-images.githubusercontent.com/83977654/127745683-338fd0bc-f1cf-4d2e-9457-da1ba730df85.png)
+
+  
+**Additional analysis done on the Psytrack weights output:**
+- Weights alignment per level
+![image](https://user-images.githubusercontent.com/83977654/127769357-4b31df8b-add4-4280-9c80-8f50e0ce4169.png)
+- Weights correlation per level, using linear regression:  
+![image](https://user-images.githubusercontent.com/83977654/127769639-52342705-664b-49fe-9a1a-e03294a51760.png)
 
 
 
