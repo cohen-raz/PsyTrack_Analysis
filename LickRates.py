@@ -6,10 +6,6 @@ import time
 from Pstrack_vocalization_task import *
 
 
-# df=pd.read_csv('C:\\Users\\razco\\PycharmProjects\\MLCage\\data\\EducageTable.csv')
-# df.to_pickle('./EducageTable.pkl')
-
-
 def general_rate_calc(action_arr, bin_size=500, rate_kind=1):
     lst = action_arr == rate_kind
     lst = lst.astype(np.int16)
