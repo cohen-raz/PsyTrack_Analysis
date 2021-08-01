@@ -13,13 +13,17 @@ Capturing trial-to-trial fluctuations in the weighting of sensory stimuli, bias,
 **Analysis Results:**
 - Psytrack weights   
 ![image](https://user-images.githubusercontent.com/83977654/127745467-4d9e0a95-311b-468d-ba50-33b056a5ecea.png)  
+  
 
   
-**Additional analysis done on the Psytrack weights output:**
-- Weights alignment per level
-![image](https://user-images.githubusercontent.com/83977654/127769357-4b31df8b-add4-4280-9c80-8f50e0ce4169.png)
+**Additional analysis done on the Psytrack weights output:**  
+- Weights alignment per level  
+![image](https://user-images.githubusercontent.com/83977654/127771357-1a30733d-1ded-4d73-88ea-0360211b9b05.png)
 - Weights correlation per level, using linear regression:  
-![image](https://user-images.githubusercontent.com/83977654/127769639-52342705-664b-49fe-9a1a-e03294a51760.png)
+![image](https://user-images.githubusercontent.com/83977654/127769639-52342705-664b-49fe-9a1a-e03294a51760.png)  
+- Mouse Lick rate  
+![image](https://user-images.githubusercontent.com/83977654/127771083-dabd59b1-1809-4f96-a888-e2b820242129.png)
+
 
 
 
