@@ -45,14 +45,12 @@ def lick_rate(df):
 
     return fig
 
-
-origin_df = load_data()
-cleand_df = clean_data(origin_df)
-all_mice_dict = get_all_mice_dict(cleand_df)
-for mouse_name in all_mice_dict.keys():
-    # if mouse_name != '0007DEC834':
-    #     continue
-    print(mouse_name)
-    mouse_df = all_mice_dict[mouse_name]
-    fig_lick_rates = lick_rate(mouse_df)
-    #save_fig(fig_lick_rates, mouse_name, 'Lick Rates',dpi=500)
+if __name__ == '__main__':
+    origin_df = load_data()
+    cleand_df = clean_data(origin_df)
+    all_mice_dict = get_all_mice_dict(cleand_df)
+    for mouse_name in all_mice_dict.keys():
+        print(mouse_name)
+        mouse_df = all_mice_dict[mouse_name]
+        fig_lick_rates = lick_rate(mouse_df)
+        save_fig(fig_lick_rates, mouse_name, 'Lick Rates',dpi=500)
