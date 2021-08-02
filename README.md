@@ -1,5 +1,5 @@
 # PsyTrack_Analysis
-PsyTrack_Analysis project main goal, is inferring the trajectory of sensory decision-making strategies.  
+PsyTrack_Analysis main goal is inferring the trajectory of sensory decision-making strategies.  
 The analysis provides a unique point of view of mice learning process, by visualize changes in behavioral strategies.  
 Unlike standard psychophysical models, which assume that weights are constant across time, this model assume that the weights evolve gradually over time.
 The optimization process is baesd on a unique varitaion of the logistic regression model developed and intorduced by [Roy, N. A., Bak, J. H., Laboratory, T. I. B., Akrami, A., Brody, C. D., & Pillow, J. W. (2021). Extracting the dynamics of behavior in sensory decision-making experiments](https://www.sciencedirect.com/science/article/pii/S0896627320309636)
