@@ -16,7 +16,7 @@ Capturing trial-to-trial fluctuations in the weighting of sensory stimuli, bias,
   
 
   
-**Additional analysis done on the Psytrack weights output:**  
+**Weights output advanced analysis :**  
 - Weights alignment per level  
 ![image](https://user-images.githubusercontent.com/83977654/127771357-1a30733d-1ded-4d73-88ea-0360211b9b05.png)
 - Weights correlation per level, using linear regression:  
