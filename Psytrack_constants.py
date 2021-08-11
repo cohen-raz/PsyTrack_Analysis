@@ -1,5 +1,4 @@
 ####################################### DATA PATHS ###########################
-####################################### DATA PATHS ###########################
 
 IN_DATA_PATH = '' # **<write here the path for the data>**
 OUT_DATA_PATH = '' # **<write here the path for the output files>**
