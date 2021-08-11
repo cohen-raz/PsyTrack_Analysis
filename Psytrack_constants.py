@@ -1,10 +1,9 @@
 ####################################### DATA PATHS ###########################
+####################################### DATA PATHS ###########################
 
-IN_DATA_PATH = 'data\\updated_educage_data.csv'
-# IN_DATA_PATH = 'data\\EducageTable.csv'
-OUT_DATA_PATH = "data\\{}-processed.csv"
-CURRENT_ANALYSIS_PATH = 'C:\\Users\\razco\\PycharmProjects\\MLCage\\data\\current_analysis'
-DATA_DICTS_PATH = './data//data_dicts//'
+IN_DATA_PATH = '' # **<write here the path for the data>**
+OUT_DATA_PATH = '' # **<write here the path for the output files>**
+DATA_DICTS_PATH = ''  # **<write here the path for the output dataa dictionaries files>**
 
 ####################################### DATA PATHS ###########################
 
