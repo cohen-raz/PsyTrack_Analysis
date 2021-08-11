@@ -24,6 +24,6 @@ Capturing trial-to-trial fluctuations in the weighting of sensory stimuli, bias,
 - Mouse Lick rate  
 ![image](https://user-images.githubusercontent.com/83977654/127771083-dabd59b1-1809-4f96-a888-e2b820242129.png)
 
-
+ 
 
 
